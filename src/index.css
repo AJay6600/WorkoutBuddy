@@ -67,16 +67,14 @@ header a{
   font-size: 0.9em;
   color: #555;
 }
-.workout-details .icons{
+
+.workout-details  span{
+ 
   display: flex;
   position: absolute;
   top: 20px;
   right: 20px;
   gap: 10px;
-
-}
-.workout-details .icons span{
- 
   cursor: pointer;
   padding: 6px;
   background: #f1f1f1;
