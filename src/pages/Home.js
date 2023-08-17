@@ -3,28 +3,38 @@ import { json } from 'react-router-dom'
 import WorkoutForm from '../component/WorkoutForm'
 import WorkoutDetails from '../component/WorkoutDetails'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
+import { useAuthContext } from '../hooks/useAuthContext'
+
 
 
 const Home = () => {
 
     const {workouts, dispatch}  = useWorkoutsContext()
+    const {user} = useAuthContext()
     useEffect(() =>{
         const fetchWorkouts = async () => {
-            const response = await fetch('https://workoutbuddy-yeon.onrender.com/api/workout')    
+            const response = await fetch('http://localhost:4000/api/workout',{
+              headers: {
+                'Authorization':`Bearer ${user.token}`
+              }
+            })    
             // const responseClone= await response      
             const jason= await response.json()
             console.log(jason)
 
             if(response.ok)
             {
-               dispatch({type: 'SET_WORKOUTS',payload: jason})
-               
+               dispatch({type: 'SET_WORKOUTS',payload: jason})               
             }
+            
         }
 
-     fetchWorkouts()
+     if(user)
+     {
+      fetchWorkouts()
+     }
 
-    },[dispatch])
+    },[dispatch,user])
   return (
    <div className="home">
     <div className="workouts">

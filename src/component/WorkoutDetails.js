@@ -1,12 +1,23 @@
 import React from 'react'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { useAuthContext } from '../hooks/useAuthContext'
+
 
 const WorkoutDetails = ({workout}) => {
     const {dispatch} = useWorkoutsContext()
+    const {user} =useAuthContext()
     const handleClick = async () => {
-        const response = await fetch('https://workoutbuddy-yeon.onrender.com/api/workout/'+workout._id,{
-            method:'DELETE'
+
+      if(!user)
+      {
+        return
+      }
+        const response = await fetch('http://localhost:4000/api/workout/'+workout._id,{
+            method:'DELETE',
+            headers:{
+              'Authorization':`Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 
