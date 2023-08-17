@@ -13,7 +13,7 @@ const Home = () => {
     const {user} = useAuthContext()
     useEffect(() =>{
         const fetchWorkouts = async () => {
-            const response = await fetch('/api/workout',{
+            const response = await fetch('https://workoutbuddy-yeon.onrender.com/api/workout',{
               headers: {
                 'Authorization':`Bearer ${user.token}`
               }
