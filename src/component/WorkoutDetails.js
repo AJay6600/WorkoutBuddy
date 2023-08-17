@@ -13,7 +13,7 @@ const WorkoutDetails = ({workout}) => {
       {
         return
       }
-        const response = await fetch('https://workout-buddy-gamma.vercel.app/api/workout/'+workout._id,{
+        const response = await fetch('https://workoutbuddy-yeon.onrender.com/api/workout/'+workout._id,{
             method:'DELETE',
             headers:{
               'Authorization':`Bearer ${user.token}`

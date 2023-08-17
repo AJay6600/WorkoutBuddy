@@ -23,7 +23,7 @@ const WorkoutForm = () => {
 
         const workout = {title,load,reps}
 
-        const response = await fetch('https://workout-buddy-gamma.vercel.app/api/workout',{
+        const response = await fetch('https://workoutbuddy-yeon.onrender.com/api/workout',{
             method:'POST',
             body: JSON.stringify(workout),
             headers: {
